@@ -1,9 +1,11 @@
 package com.kanyideveloper.shoppie.products
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.kanyideveloper.shoppie.adapter.ProductAdapter
 import com.kanyideveloper.shoppie.databinding.FragmentProductBinding
 
+private const val TAG = "ProductFragment"
 class ProductFragment : Fragment() {
 
     private lateinit var binding: FragmentProductBinding
@@ -29,6 +32,7 @@ class ProductFragment : Fragment() {
         val view = binding.root
 
         productViewModel.products.observe(viewLifecycleOwner, Observer { productsList ->
+            Log.d(TAG, "onCreateView: $productsList")
             productAdapter.submitList(productsList)
             binding.productsRecyclerView.adapter = productAdapter
         })
@@ -39,6 +43,21 @@ class ProductFragment : Fragment() {
                     ProductFragmentDirections.actionProductFragmentToProductDetailsFragment(product)
                 )
                 productViewModel.displayProductDetailsCompleted()
+            }
+        })
+
+        productViewModel.status.observe(viewLifecycleOwner, Observer { status ->
+            when(status){
+                Status.LOADING ->{
+                    binding.progressBar.isVisible = true
+                }
+                Status.DONE ->{
+                    binding.progressBar.isVisible = false
+                }
+                Status.ERROR ->{
+                    binding.textViewError.isVisible = true
+                    binding.progressBar.isVisible = false
+                }
             }
         })
 

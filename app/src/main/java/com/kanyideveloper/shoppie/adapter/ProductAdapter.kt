@@ -9,7 +9,8 @@ import com.bumptech.glide.Glide
 import com.kanyideveloper.shoppie.databinding.ProductRowBinding
 import com.kanyideveloper.shoppie.model.Product
 
-class ProductAdapter(private val onClickListener: OnClickListener) : ListAdapter<Product, ProductAdapter.MyViewHolder>(MyDiffUtil) {
+class ProductAdapter(private val onClickListener: OnClickListener) :
+    ListAdapter<Product, ProductAdapter.MyViewHolder>(MyDiffUtil) {
 
     object MyDiffUtil : DiffUtil.ItemCallback<Product>() {
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
@@ -30,7 +31,7 @@ class ProductAdapter(private val onClickListener: OnClickListener) : ListAdapter
                 .into(binding.productPicImageView)
 
             binding.productNameTextView.text = item?.productName
-            binding.productPriceTextView.text = item?.productPrice
+            binding.productPriceTextView.text = item?.productPrice.toString()
         }
     }
 
