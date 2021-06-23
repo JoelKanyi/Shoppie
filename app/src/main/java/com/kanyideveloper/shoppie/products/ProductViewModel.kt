@@ -29,8 +29,13 @@ class ProductViewModel : ViewModel() {
     val products: LiveData<List<Product>>
         get() = _products
 
+    private val _cartEmpty = MutableLiveData<Boolean>()
+    val cartStatus: LiveData<Boolean>
+        get() = _cartEmpty
+
     init {
         getAllProducts()
+        checkCart()
     }
 
     private fun getAllProducts() {
@@ -71,5 +76,13 @@ class ProductViewModel : ViewModel() {
 
     fun displayProductDetailsCompleted() {
         _navigateToSelectedItem.value = null
+    }
+
+    private fun checkCart() {
+        firestoreDatabase.collection("cart_items").get().addOnCompleteListener {
+            if (it.isSuccessful) {
+                _cartEmpty.value = it.result!!.documents.isEmpty()
+            }
+        }
     }
 }
