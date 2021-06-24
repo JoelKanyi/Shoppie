@@ -3,10 +3,10 @@ package com.kanyideveloper.shoppie.model
 import android.os.Parcel
 import android.os.Parcelable
 
-class Product(val id: String? = null, val productName: String? = null, val productDescription: String? = null, val productPrice: Int = 0, val productImageUrl: String? = null) :
+class Product(val id: Int = 0, val itemName: String? = null, val itemDescription: String? = null, val itemPrice: Int = 0, val itemImage: String? = null) :
     Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
+        parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
         parcel.readInt(),
@@ -15,11 +15,11 @@ class Product(val id: String? = null, val productName: String? = null, val produ
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(id)
-        parcel.writeString(productName)
-        parcel.writeString(productDescription)
-        parcel.writeInt(productPrice)
-        parcel.writeString(productImageUrl)
+        parcel.writeInt(id)
+        parcel.writeString(itemName)
+        parcel.writeString(itemDescription)
+        parcel.writeInt(itemPrice)
+        parcel.writeString(itemImage)
     }
 
     override fun describeContents(): Int {

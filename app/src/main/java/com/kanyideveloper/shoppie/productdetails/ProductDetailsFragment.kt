@@ -36,11 +36,11 @@ class ProductDetailsFragment : Fragment() {
             ViewModelProvider(this, viewModelFactory).get(ProductDetailsViewModel::class.java)
 
         productDetailsViewModel.productDetails.observe(viewLifecycleOwner, Observer { product ->
-            binding.textViewProdName.text = product.productName
-            binding.textViewProdPrice.text = "Ksh.${product.productPrice}"
-            binding.textViewProdDescr.text = product.productDescription
+            binding.textViewProdName.text = product.itemName
+            binding.textViewProdPrice.text = "Ksh.${product.itemPrice}"
+            binding.textViewProdDescr.text = product.itemDescription
             Glide.with(binding.prodImage)
-                .load(product.productImageUrl)
+                .load(product.itemImage)
                 .into(binding.prodImage)
         })
 

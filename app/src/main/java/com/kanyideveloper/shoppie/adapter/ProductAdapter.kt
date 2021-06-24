@@ -27,11 +27,11 @@ class ProductAdapter(private val onClickListener: OnClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Product?) {
             Glide.with(binding.productPicImageView)
-                .load(item?.productImageUrl)
+                .load(item?.itemImage)
                 .into(binding.productPicImageView)
 
-            binding.productNameTextView.text = item?.productName
-            binding.productPriceTextView.text = item?.productPrice.toString()
+            binding.productNameTextView.text = item?.itemName
+            binding.productPriceTextView.text = item?.itemPrice.toString()
         }
     }
 

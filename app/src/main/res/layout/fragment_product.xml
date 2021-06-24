@@ -6,18 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".products.ProductFragment">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/productToolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_700"
+        app:titleTextColor="@color/white"
+        app:title="Shoppie"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productsRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:listitem="@layout/product_row"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/productToolbar"
+        app:spanCount="2"
+        tools:listitem="@layout/product_row" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -34,10 +48,10 @@
         android:id="@+id/textViewError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="TextView"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="TextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

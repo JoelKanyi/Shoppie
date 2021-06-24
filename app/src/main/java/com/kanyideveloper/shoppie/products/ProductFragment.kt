@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -32,7 +33,7 @@ class ProductFragment : Fragment() {
         binding = FragmentProductBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        setHasOptionsMenu(true)
+        productViewModel.checkCart()
 
         productViewModel.products.observe(viewLifecycleOwner, Observer { productsList ->
             Log.d(TAG, "onCreateView: $productsList")
@@ -66,7 +67,8 @@ class ProductFragment : Fragment() {
 
         productViewModel.cartStatus.observe(viewLifecycleOwner, Observer { cartStatus ->
             if (!cartStatus) {
-                Toast.makeText(requireContext(), "Not Empty", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "Not Empty", Toast.LENGTH_SHORT).show()
+                binding.productToolbar.inflateMenu(R.menu.prod_menu)
             } else {
                 Toast.makeText(requireContext(), "Empty", Toast.LENGTH_SHORT).show()
             }

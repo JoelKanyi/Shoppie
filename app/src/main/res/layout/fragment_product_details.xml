@@ -14,47 +14,13 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:liftOnScroll="true">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="Twende Shopping"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/shopping_cart"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_shopping_cart" />
-
-            <TextView
-                android:id="@+id/cart_badge"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/badge_background"
-                android:gravity="center"
-                android:visibility="visible"
-                android:textColor="@android:color/white"/>
-        </RelativeLayout>
-
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/white"
-            app:title="Shoppie"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:title="Shoppie">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/prodImage"
@@ -86,9 +52,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Tagwood LS Woofer"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/textViewProdPrice"
                 app:layout_constraintStart_toStartOf="@+id/textViewProdPrice"
                 app:layout_constraintTop_toBottomOf="@+id/textViewProdPrice" />
@@ -112,8 +78,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textSize="14sp"
                 android:text="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available."
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/textViewProdName"
                 app:layout_constraintStart_toStartOf="@+id/textViewProdName"
                 app:layout_constraintTop_toBottomOf="@+id/textViewProdName" />
