@@ -78,7 +78,7 @@ class ProductViewModel : ViewModel() {
         _navigateToSelectedItem.value = null
     }
 
-    fun checkCart() {
+    private fun checkCart() {
         firestoreDatabase.collection("cart_items").get().addOnCompleteListener {
             if (it.isSuccessful) {
                 _cartEmpty.value = it.result!!.documents.isEmpty()

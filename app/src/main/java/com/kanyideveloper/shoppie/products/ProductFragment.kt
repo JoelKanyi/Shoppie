@@ -16,7 +16,7 @@ import com.kanyideveloper.shoppie.databinding.FragmentProductBinding
 
 private const val TAG = "ProductFragment"
 
-class ProductFragment : Fragment() {
+class ProductFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
     private lateinit var binding: FragmentProductBinding
     private val productViewModel by lazy { ViewModelProvider(this).get(ProductViewModel::class.java) }
@@ -33,7 +33,8 @@ class ProductFragment : Fragment() {
         binding = FragmentProductBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        productViewModel.checkCart()
+
+
 
         productViewModel.products.observe(viewLifecycleOwner, Observer { productsList ->
             Log.d(TAG, "onCreateView: $productsList")
@@ -78,6 +79,15 @@ class ProductFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.prod_menu,menu)
+        inflater.inflate(R.menu.prod_menu, menu)
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        return if (item!!.itemId == R.id.prod_cart_menu) {
+            findNavController().navigate(R.id.action_productFragment_to_cartFragment)
+            true
+        } else {
+            false
+        }
     }
 }
