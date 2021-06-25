@@ -1,5 +1,6 @@
 package com.kanyideveloper.shoppie.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -25,13 +26,14 @@ class ProductAdapter(private val onClickListener: OnClickListener) :
 
     inner class MyViewHolder(private val binding: ProductRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(item: Product?) {
             Glide.with(binding.productPicImageView)
                 .load(item?.itemImage)
                 .into(binding.productPicImageView)
 
             binding.productNameTextView.text = item?.itemName
-            binding.productPriceTextView.text = item?.itemPrice.toString()
+            binding.productPriceTextView.text = "KSH.${item?.itemPrice}"
         }
     }
 

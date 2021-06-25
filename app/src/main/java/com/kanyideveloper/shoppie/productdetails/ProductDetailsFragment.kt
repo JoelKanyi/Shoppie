@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.kanyideveloper.shoppie.R
 import com.kanyideveloper.shoppie.databinding.FragmentProductDetailsBinding
@@ -46,6 +47,7 @@ class ProductDetailsFragment : Fragment() {
 
         binding.addToCart.setOnClickListener {
             productDetailsViewModel.addItemToCart(product)
+            productDetailsViewModel.navigateBackToProducts()
         }
 
         productDetailsViewModel.addedToCart.observe(viewLifecycleOwner, Observer { added ->
@@ -55,19 +57,13 @@ class ProductDetailsFragment : Fragment() {
             }
         })
 
-        productDetailsViewModel.cartStatus.observe(viewLifecycleOwner, Observer { cartStatus ->
-            if (!cartStatus) {
-                Toast.makeText(requireContext(), "Not Empty", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "Empty", Toast.LENGTH_SHORT).show()
+        productDetailsViewModel.backTOProducts.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                findNavController().navigate(R.id.action_productDetailsFragment_to_productFragment)
+                productDetailsViewModel.navigatingBackCompleted()
             }
         })
 
         return view
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.prod_menu,menu)
     }
 }

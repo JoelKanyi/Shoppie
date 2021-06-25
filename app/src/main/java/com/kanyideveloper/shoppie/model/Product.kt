@@ -3,7 +3,13 @@ package com.kanyideveloper.shoppie.model
 import android.os.Parcel
 import android.os.Parcelable
 
-class Product(val id: Int = 0, val itemName: String? = null, val itemDescription: String? = null, val itemPrice: Int = 0, val itemImage: String? = null) :
+class Product(
+    val id: Int = 0,
+    val itemName: String? = null,
+    val itemDescription: String? = null,
+    val itemPrice: Int = 0,
+    val itemImage: String? = null
+) :
     Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),

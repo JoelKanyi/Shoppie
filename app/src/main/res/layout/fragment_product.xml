@@ -6,19 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".products.ProductFragment">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/productToolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/purple_700"
-        app:titleTextColor="@color/white"
-        app:title="Shoppie"
+        android:background="@color/main"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Shoppie"
+        app:titleTextColor="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productsRecyclerView"

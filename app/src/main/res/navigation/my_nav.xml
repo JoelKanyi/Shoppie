@@ -13,6 +13,10 @@
         <argument
             android:name="productDetails"
             app:argType="com.kanyideveloper.shoppie.model.Product" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productFragment"
+            app:destination="@id/productFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -42,7 +46,8 @@
         tools:layout="@layout/fragment_product" >
         <action
             android:id="@+id/action_productFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/productDetailsFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_productFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
@@ -51,5 +56,9 @@
         android:id="@+id/cartFragment"
         android:name="com.kanyideveloper.shoppie.cart.CartFragment"
         android:label="cart_fragment"
-        tools:layout="@layout/cart_fragment" />
+        tools:layout="@layout/cart_fragment" >
+        <action
+            android:id="@+id/action_cartFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
 </navigation>

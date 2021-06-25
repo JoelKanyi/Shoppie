@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:padding="5dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/cartImageImageView"
@@ -28,8 +28,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:text="Nike Shoes"
-            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cartImageImageView" />
@@ -42,9 +42,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:text="KSH.2000"
-            android:textStyle="bold"
             android:textAlignment="textEnd"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cartItemNameTextView" />

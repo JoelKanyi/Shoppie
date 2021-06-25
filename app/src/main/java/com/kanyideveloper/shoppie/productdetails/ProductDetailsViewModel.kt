@@ -17,25 +17,16 @@ class ProductDetailsViewModel(private val product: Product, application: Applica
     val productDetails: LiveData<Product>
         get() = _productDetails
 
-    private val _cartEmpty = MutableLiveData<Boolean>()
-    val cartStatus: LiveData<Boolean>
-        get() = _cartEmpty
-
     private val _addedToCart = MutableLiveData<Boolean>()
     val addedToCart: LiveData<Boolean>
         get() = _addedToCart
 
+    private val _backToProducts = MutableLiveData<Boolean>()
+    val backTOProducts: LiveData<Boolean>
+        get() = _backToProducts
+
     init {
         _productDetails.value = product
-        checkCart()
-    }
-
-    private fun checkCart() {
-        firestoreDatabase.collection("cart_items").get().addOnCompleteListener {
-            if (it.isSuccessful) {
-                _cartEmpty.value = it.result!!.documents.isEmpty()
-            }
-        }
     }
 
     fun addItemToCart(product: Product) {
@@ -44,5 +35,13 @@ class ProductDetailsViewModel(private val product: Product, application: Applica
         }.addOnFailureListener {
             _addedToCart.value = false
         }
+    }
+
+    fun navigateBackToProducts() {
+        _backToProducts.value = true
+    }
+
+    fun navigatingBackCompleted() {
+        _backToProducts.value = false
     }
 }

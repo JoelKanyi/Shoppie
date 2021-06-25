@@ -1,5 +1,6 @@
 package com.kanyideveloper.shoppie.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.kanyideveloper.shoppie.databinding.CartRowBinding
 import com.kanyideveloper.shoppie.model.Product
 
-class CartAdapter(private val onClickListener: OnClickListener) :
+class CartAdapter :
     ListAdapter<Product, CartAdapter.MyViewHolder>(MyDiffUtil) {
 
     object MyDiffUtil : DiffUtil.ItemCallback<Product>() {
@@ -25,13 +26,14 @@ class CartAdapter(private val onClickListener: OnClickListener) :
 
     inner class MyViewHolder(private val binding: CartRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(item: Product?) {
             Glide.with(binding.cartImageImageView)
                 .load(item?.itemImage)
                 .into(binding.cartImageImageView)
 
             binding.cartItemNameTextView.text = item?.itemName
-            binding.cartItemPricetextView.text = item?.itemPrice.toString()
+            binding.cartItemPricetextView.text = "KSH.${item?.itemPrice}"
         }
     }
 
@@ -43,11 +45,6 @@ class CartAdapter(private val onClickListener: OnClickListener) :
                 false
             )
         )
-    }
-
-
-    class OnClickListener(val clickListener: (product: Product) -> Unit) {
-        fun onClick(product: Product) = clickListener(product)
     }
 
     override fun onBindViewHolder(holder: CartAdapter.MyViewHolder, position: Int) {

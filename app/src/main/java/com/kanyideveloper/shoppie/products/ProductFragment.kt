@@ -2,8 +2,10 @@ package com.kanyideveloper.shoppie.products
 
 import android.os.Bundle
 import android.util.Log
-import android.view.*
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -33,8 +35,7 @@ class ProductFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         binding = FragmentProductBinding.inflate(inflater, container, false)
         val view = binding.root
 
-
-
+        binding.productToolbar.setOnMenuItemClickListener(this)
 
         productViewModel.products.observe(viewLifecycleOwner, Observer { productsList ->
             Log.d(TAG, "onCreateView: $productsList")
@@ -68,23 +69,23 @@ class ProductFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         productViewModel.cartStatus.observe(viewLifecycleOwner, Observer { cartStatus ->
             if (!cartStatus) {
-                //Toast.makeText(requireContext(), "Not Empty", Toast.LENGTH_SHORT).show()
                 binding.productToolbar.inflateMenu(R.menu.prod_menu)
-            } else {
-                Toast.makeText(requireContext(), "Empty", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
+        productViewModel.navigateToCart.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                findNavController().navigate(R.id.action_productFragment_to_cartFragment)
+                productViewModel.navigatingToCartCompleted()
             }
         })
         return view
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.prod_menu, menu)
-    }
-
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        return if (item!!.itemId == R.id.prod_cart_menu) {
-            findNavController().navigate(R.id.action_productFragment_to_cartFragment)
+        return if (item?.itemId == R.id.prod_cart_menu) {
+            productViewModel.navigateToCart()
             true
         } else {
             false

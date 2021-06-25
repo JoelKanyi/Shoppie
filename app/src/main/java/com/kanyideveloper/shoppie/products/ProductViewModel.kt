@@ -33,6 +33,10 @@ class ProductViewModel : ViewModel() {
     val cartStatus: LiveData<Boolean>
         get() = _cartEmpty
 
+    private val _navigateToCart = MutableLiveData<Boolean>()
+    val navigateToCart: LiveData<Boolean>
+        get() = _navigateToCart
+
     init {
         checkCart()
         getAllProducts()
@@ -76,6 +80,14 @@ class ProductViewModel : ViewModel() {
 
     fun displayProductDetailsCompleted() {
         _navigateToSelectedItem.value = null
+    }
+
+    fun navigatingToCartCompleted() {
+        _navigateToCart.value = false
+    }
+
+    fun navigateToCart() {
+        _navigateToCart.value = true
     }
 
     private fun checkCart() {

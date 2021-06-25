@@ -2,5 +2,9 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/audiowide</item>
+        <item>@font/bungee_shade</item>
+        <item>@font/faster_one</item>
+        <item>@font/knewave</item>
+        <item>@font/sonsie_one</item>
     </array>
 </resources>
