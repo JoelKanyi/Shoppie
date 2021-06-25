@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.kanyideveloper.shoppie.model.Product
@@ -36,6 +37,10 @@ class ProductViewModel : ViewModel() {
     private val _navigateToCart = MutableLiveData<Boolean>()
     val navigateToCart: LiveData<Boolean>
         get() = _navigateToCart
+
+    private val _signout = MutableLiveData<Boolean>()
+    val signout : LiveData<Boolean>
+        get() = _signout
 
     init {
         checkCart()
@@ -96,5 +101,14 @@ class ProductViewModel : ViewModel() {
                 _cartEmpty.value = it.result!!.documents.isEmpty()
             }
         }
+    }
+
+    fun logout(){
+        FirebaseAuth.getInstance().signOut()
+        _signout.value = true
+    }
+
+    fun doneSigningOut(){
+        _signout.value = false
     }
 }

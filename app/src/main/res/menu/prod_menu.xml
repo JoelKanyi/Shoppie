@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<item android:id="@+id/prod_cart_menu" app:showAsAction="always" android:icon="@drawable/ic_shopping_cart_with_money" android:title="Cart"/>
+    <item
+        android:id="@+id/prod_cart_menu"
+        android:icon="@drawable/ic_shopping_cart_with_money"
+        android:title="Cart"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        app:showAsAction="always" />
+
 </menu>

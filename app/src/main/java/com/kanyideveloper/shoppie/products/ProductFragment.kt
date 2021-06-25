@@ -70,6 +70,8 @@ class ProductFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         productViewModel.cartStatus.observe(viewLifecycleOwner, Observer { cartStatus ->
             if (!cartStatus) {
                 binding.productToolbar.inflateMenu(R.menu.prod_menu)
+            }else{
+                //Handle a situation where the cart is empty and we need to display logout
             }
         })
 
@@ -80,15 +82,25 @@ class ProductFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                 productViewModel.navigatingToCartCompleted()
             }
         })
+
+        productViewModel.signout.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                findNavController().navigate(R.id.action_productFragment_to_signInFragment)
+                productViewModel.doneSigningOut()
+            }
+        })
         return view
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        return if (item?.itemId == R.id.prod_cart_menu) {
+        if (item?.itemId == R.id.prod_cart_menu) {
             productViewModel.navigateToCart()
-            true
+            return true
+        } else if (item?.itemId == R.id.logout) {
+            productViewModel.logout()
+            return true
         } else {
-            false
+            return false
         }
     }
 }
