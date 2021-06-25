@@ -14,7 +14,7 @@ Min Api Level : 21
 
 In order to get the app running yourself, you need to:
 
-1.  clone this project
+1.  Clone this project
 2.  Import the project into Android Studio
 3.  Connect the android device with USB or just use your emulator
 4.  In Android Studio, click on the "Run" button.
@@ -35,7 +35,12 @@ Libraries used in the whole application are:
 
 ## Demo
 <p float="left">
-<img src="screenshots/Screenshot_20210509-143244.png" width=250/>
+<img src="shoppie-screenshots/Screenshot_20210625-081321.png" width=250/>
+<img src="shoppie-screenshots/Screenshot_20210625-081233.png" width=250/>
+<img src="shoppie-screenshots/Screenshot_20210625-110153.png" width=250/>
+<img src="shoppie-screenshots/Screenshot_20210625-103108.png" width=250/>
+<img src="shoppie-screenshots/Screenshot_20210625-112429.png" width=250/>
+<img src="shoppie-screenshots/Screenshot_20210625-112449.png" width=250/>
   </p>
 
 

@@ -79,7 +79,7 @@ class SignInFragment : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(requireContext(), "Sign in Success", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_splashFragment2_to_productFragment)
+                    findNavController().navigate(R.id.action_signInFragment_to_productFragment)
                 } else {
                     Toast.makeText(requireContext(), "Failed to Sign in", Toast.LENGTH_SHORT).show()
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
