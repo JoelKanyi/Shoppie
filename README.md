@@ -3,6 +3,7 @@
 # Shoppie
 
 A simple shopping app that uses Firebase as its backend for authentication and storing data. I tried to use some architecture 
+  
 Min Api Level : 21 
 
 ## Setup Requirements
